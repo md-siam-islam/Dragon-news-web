@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { FaRegEye, FaStar, FaShareAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const News = ({ singlenews }) => {
     return (
@@ -32,7 +33,7 @@ const News = ({ singlenews }) => {
                 {singlenews.details.length > 100 ? singlenews.details.slice(0, 100) + '...' : singlenews.details}
             </p>
 
-            <button className="text-blue-500 font-semibold mt-2">Read More</button>
+            <Link to={`/news/${singlenews._id}`} className="text-blue-500 font-semibold mt-2">Read More</Link>
 
             <div className="flex items-center justify-between mt-4">
                 <div className="flex items-center text-yellow-500">

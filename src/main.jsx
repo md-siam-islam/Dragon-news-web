@@ -11,6 +11,12 @@ import Roots from './Components/Root/Roots.jsx';
 import About from './Components/About.jsx';
 import Categories from './Components/Categories/Categories.jsx';
 import Authprovider from './Authprovider/Authprovider.jsx';
+import Login from './Page/Login.jsx';
+import Home from './Components/Home/Home.jsx';
+import Signup from './Page/Signup.jsx';
+import Newnews from './Page/Newnews.jsx';
+import Privetrout from './Privetrout/Privetrout.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -32,6 +38,27 @@ const router = createBrowserRouter([
       {
         path:"/about",
         element:<About></About>,
+      },
+      
+    ]
+    
+  },
+  {
+    path:"/news/:id",
+    element:<Privetrout><Newnews></Newnews></Privetrout>,
+    loader: ({params}) => fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
+  },
+  {
+    path:"/home",
+    element:<Home></Home>,
+    children:[
+      {
+        path:"/home/login",
+        element:<Login></Login>,
+      },
+      {
+        path:"/home/signup",
+        element:<Signup></Signup>,
       },
     ]
   },

@@ -1,9 +1,24 @@
-import React from 'react';
+
+import { Outlet } from 'react-router-dom';
+import Header from '../Header/Header';
+import Letestnews from '../Letestnews/Letestnews';
+import Navabr from '../../Navbar/Navabr';
 
 const Home = () => {
     return (
         <div>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora reiciendis cupiditate illum rerum? Ut, eligendi aspernatur neque rerum voluptatibus perferendis?
+            <section>
+                <header>
+                    <Header></Header>
+
+                    <Letestnews></Letestnews>
+                </header>
+
+                <nav>
+                    <Navabr></Navabr>
+                </nav>
+            </section>
+            <Outlet></Outlet>
         </div>
     );
 };
