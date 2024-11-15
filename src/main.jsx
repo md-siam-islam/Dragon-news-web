@@ -10,6 +10,7 @@ import {
 import Roots from './Components/Root/Roots.jsx';
 import About from './Components/About.jsx';
 import Categories from './Components/Categories/Categories.jsx';
+import Authprovider from './Authprovider/Authprovider.jsx';
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <Authprovider>
     <RouterProvider router={router} />
+ </Authprovider>
   </StrictMode>,
 )
