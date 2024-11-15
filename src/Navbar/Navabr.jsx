@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import user from "../../src/assets/user.png"
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Authcontext } from "../Authprovider/Authprovider";
 
 
@@ -12,14 +12,22 @@ const Navabr = () => {
             <div>{user && user?.email}</div>
 
             <div className='flex items-center gap-5'>
-                <Link to="/"><a className='font-semibold'>Home</a></Link>
-                <Link to="/about"><a className='font-semibold'>About</a></Link>
-                <Link to="/"><a className='font-semibold'>Career</a></Link>
+                <NavLink to="/"><a className='font-semibold'>Home</a></NavLink>
+                <NavLink to="/about"><a className='font-semibold'>About</a></NavLink>
+                <NavLink to="/career"><a className='font-semibold'>Career</a></NavLink>
             </div>
 
             <div className='flex items-centerjc
              gap-4'>
-                <img src={user} alt="" />
+
+                {
+                    user && user?.email ? <div className="flex flex-col items-center justify-center">
+                        <img className="w-10 rounded-full" src={user. photoURL} alt="" />
+                        <h1>{user.displayName}</h1>
+                    </div> : 
+                    <img src={user} alt="" />
+                }
+                
 
                 {
                     user && user?.email ? <div>

@@ -3,18 +3,26 @@ import { Link } from "react-router-dom";
 import { Authcontext } from "../Authprovider/Authprovider";
 
 const Signup = () => {
-    const {Signup,setUser} = useContext(Authcontext)
+    const {Signup,setUser,updateInfo} = useContext(Authcontext)
     const handlesignup = (event) => {
         event.preventDefault();
         const name = event.target.name.value;
+        const photo = event.target.photo.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        Signup(email,password,name)
+        Signup(email,password)
         .then((userCredential) => {
             
             const user = userCredential.user;
-            setUser(user)
+            
             event.target.reset()
+            updateInfo({displayName:name ,  photoURL:photo})
+            .then(() => {
+             console.log("Profile Update done");
+             setUser(user)
+            }).catch((error) => {
+              console.log(error);
+            });
            console.log(user);
           })
         .catch((error) => {
@@ -38,6 +46,19 @@ const Signup = () => {
               placeholder="Enter Your Name"
               className="input input-bordered"
               required
+            />
+          </div>
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo URL</span>
+            </label>
+            <input
+              type="text"
+              name="photo"
+              placeholder="Enter Your Photo URL"
+              className="input input-bordered"
+              
             />
           </div>
 
